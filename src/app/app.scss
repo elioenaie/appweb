@@ -1,0 +1,31 @@
+
+#menu-material {
+  .menu-header {
+    padding: 5px 15px;
+    background-image: url('../assets/img/campo.jpg');
+    background-size: cover;
+    color: white;
+    .name {
+      font-weight: 500;
+      margin-bottom: 3px;
+      color: white;
+    }
+   
+  }
+  .user-avatar {
+    max-width: 125px;height: 125px;
+    padding: .5em;
+    height: 12vh;
+  }
+  h3,
+  .label,
+  {
+    color: #999;
+    font-weight: 400;
+  }
+  ion-icon {
+    color: #777;
+  }
+
+  }
+

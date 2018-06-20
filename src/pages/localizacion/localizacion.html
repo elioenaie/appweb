@@ -1,0 +1,23 @@
+
+<ion-header>
+    <ion-navbar color="colorapp">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        <ion-icon name="basket"></ion-icon> 
+        Encontrar lugares
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div id="map"></div>
+
+  <ion-fab bottom right><button color="light" ion-fab (click)="getCurrentPosition()"><ion-icon ios="ios-locate-outline" md="md-locate"></ion-icon></button></ion-fab>
+ 
+</ion-content>
+
+
+

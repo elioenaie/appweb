@@ -1,0 +1,86 @@
+<!--
+  Generated template for the OperadorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="colorapp" hideBackButton="true">
+    <ion-title>Bienvenido</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left (click)="cerrar()">
+        <ion-icon name="person"></ion-icon>
+         Cerrar sesión
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<br>
+<ion-content padding>
+   <div id="round">
+          
+           <ion-list>
+             <ion-item *ngFor="let usuario of datasCollection" style="text-align: center"> 
+                <div style="text-align: center">
+                <img [src]="usuario.image" width="100" height="100" >
+                </div>
+                <h1>hola!!! <b>{{usuario.nombreuser}}</b></h1>
+                <h4><b>{{usuario.email}}</b></h4>
+              
+             </ion-item>
+           </ion-list>
+
+        <!--<ion-grid>
+          <ion-row no-padding>
+              <ion-row no-padding>
+                  <ion-col> 
+                    <button ion-button round  color="secondary" icon-start (click)="verProductos()">
+                      <ion-icon name='archive'></ion-icon>
+                      Ver Productos
+                    </button>
+                  </ion-col>
+                  <ion-col text-center>
+                    <button ion-button round color="secondary" icon-start (click)="verInsumos()">
+                      <ion-icon name='paper'></ion-icon>
+                      Ver Insumos
+                    </button>
+                  </ion-col>
+                </ion-row>
+              <ion-col> 
+                <button ion-button round  color="secondary" icon-start (click)="irProductos()">
+                  <ion-icon name='archive'></ion-icon>
+                  Administrar Productos
+                </button>
+              </ion-col>
+              <ion-col text-center>
+                <button ion-button round color="secondary" icon-start (click)="irInsumos()">
+                  <ion-icon name='paper'></ion-icon>
+                  Administrar Insumos
+                </button>
+              </ion-col>
+            </ion-row>
+            <ion-row no-padding>
+                <ion-col> 
+                  <button ion-button round color="secondary" icon-start (click)=" irFavoritos()">
+                    <ion-icon name='star'></ion-icon>
+                    Favoritos
+                  </button>
+                </ion-col>
+                <ion-col text-center>
+                  <button ion-button round color="secondary" icon-start (click)=" irTiendas()">
+                    <ion-icon name='md-appstore'></ion-icon>
+                    Tiendas
+                  </button>
+                </ion-col>
+              </ion-row>
+          </ion-grid>-->
+   </div>
+   <br>
+   <button ion-button (click)="openActionSheet()" class="button" block>Menú de opciones</button>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar  color="colorapp">
+    </ion-toolbar>
+  </ion-footer>

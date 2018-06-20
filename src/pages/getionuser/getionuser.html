@@ -1,0 +1,75 @@
+<!--
+  Generated template for the GetionuserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar color="colorapp">
+       <ion-title>
+          Información usuario
+       </ion-title>
+       <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+       
+    </ion-navbar>
+ </ion-header>
+
+ <ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+                <ion-refresher-content
+                  pullingIcon="arrow-dropdown"
+                  pullingText="Deslizar para refrescar"
+                  refreshingSpinner="circles"
+                  refreshingText="Actualizando datos...">
+                </ion-refresher-content>
+              </ion-refresher>
+
+<ion-list>
+<ion-card style="border-left-style:ridge;border-top-style: ridge;border-right-style: ridge;border-bottom-style: ridge;"
+   class="movie"
+   text-wrap
+   *ngFor="let movie of movies | async">
+   <ion-item>
+      <div *ngIf="movie.image">
+         <img [src]="movie.image">
+      </div>
+      <h1><b>{{ movie.nombreuser }}</b></h1>
+      <h3><b>email</b></h3>
+      <small>({{ movie.email }})</small>
+      <h3><b>Rol</b></h3>
+      <p>{{ movie.rol }}</p>
+    </ion-item> 
+      
+
+   <div class="manage-record"  style="border-top-style: groove;" >
+        <ion-grid>
+                <ion-row>
+                  <ion-col>
+                        <button
+                        ion-button
+                        text-center
+                        color="primary"
+                        (click)="editMovie(movie)" block>Editar perfil</button>
+          
+                  </ion-col>
+                  <ion-col>
+                        <button
+                        ion-button
+                        text-center
+                        color="danger"
+                        (click)="deleteMovie(movie)" block>Eliminar usuario</button>
+                  </ion-col>
+                </ion-row>
+            </ion-grid>
+   
+ </div>
+
+</ion-card>
+</ion-list>
+
+
+
+</ion-content>

@@ -1,0 +1,30 @@
+<!--
+  Generated template for the PopoverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header color="colorapp">
+
+  <ion-navbar color="colorapp">
+    <ion-title>Perfil de usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color:#A5D6A7">
+  <br>
+  <ion-list  style="background-color:#A5D6A7">
+    <br>
+        <ion-item *ngFor="let usuario of datasCollection"  class="menu-header"  style=" text-align: center;background-color:#A5D6A7;"> 
+        <div style="text-align: center">
+        <img [src]="usuario.image" width="100" height="100" *ngIf="!!usuario.image" >
+        </div>
+        <h4>hola!!! <b>{{usuario.nombreuser}}</b></h4>
+        <h4><b>{{usuario.email}}</b></h4>
+     </ion-item>
+   </ion-list>
+</ion-content>
+
+

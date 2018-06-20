@@ -1,0 +1,17 @@
+page-slide {
+    .swiper-pagination-bullet-active {
+        background: #8BC34A;
+      }
+      text-align: center;
+  ion-toggle {
+      display: inline-block;
+  }
+      ion-slide {
+        background-color:#03a9f4;
+      }
+      ion-slide img {
+        height: 70vh !important;
+        width: auto !important;
+      }
+   
+}

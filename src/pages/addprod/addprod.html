@@ -1,0 +1,84 @@
+
+<ion-header>
+    <ion-navbar>
+       <ion-title>
+          Alta productos
+       </ion-title>
+       <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+       <ion-buttons end>
+        <button
+           ion-button
+           icon-only
+           (click)="addRecord()">
+       <ion-icon name="add"></ion-icon>
+        </button>
+     </ion-buttons>
+    </ion-navbar>
+ </ion-header>
+
+
+<ion-content>
+            <ion-refresher (ionRefresh)="doRefresh($event)">
+                        <ion-refresher-content
+                          pullingIcon="arrow-dropdown"
+                          pullingText="Deslizar para refrescar"
+                          refreshingSpinner="circles"
+                          refreshingText="Actualizando datos...">
+                        </ion-refresher-content>
+                      </ion-refresher>
+
+   <ion-list>
+        <ion-card style="border-left-style:ridge;border-top-style: ridge;border-right-style: ridge;border-bottom-style: ridge;"
+           class="movie"
+           text-wrap
+           *ngFor="let movie of movies | async">
+           <ion-item>
+              <div *ngIf="movie.image">
+                 <img [src]="movie.image">
+              </div>
+              <h1><b>{{ movie.nombre }}</b></h1>
+              <h3><b>Nombre científico</b></h3>
+              <small>({{ movie.nombreCientifico }})</small>
+              <section class="multiples">
+                <h3><b>Proveedor</b></h3>
+                 <ion-chip
+                    padding-left
+                    padding-right
+                    margin-right>{{ movie.proveedor }}</ion-chip>
+              </section>
+              <h3><b>Lugar de producción</b></h3>
+              <p>{{ movie.lugarproduccion }}</p>
+              
+              <h3><b>Descripción</b></h3>
+              <p class="justifyText">{{ movie.descripcion }}</p>
+           </ion-item>
+  
+  
+           <div class="manage-record"  style="border-top-style: groove;" >
+                <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                                <button
+                                ion-button
+                                text-center
+                                color="primary"
+                                (click)="editMovie(movie);" block >Editar</button>
+                          </ion-col>
+                          <ion-col>
+                                <button
+                                ion-button
+                                text-center
+                                color="danger"
+                                (click)="deleteMovie(movie)" block>Eliminar</button>
+                          </ion-col>
+                        </ion-row>
+                    </ion-grid>
+               </div>
+        </ion-card>
+     </ion-list>
+  
+    
+        
+</ion-content>

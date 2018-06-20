@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar color="colorapp">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>
+        <ion-icon name="basket"></ion-icon> 
+        Productos preferidos
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+  <ion-list>
+      <ion-item-sliding #item *ngFor="let products of favoritos">
+        <ion-item>
+          <ion-avatar item-start>
+          <img [src]="products.image">
+         </ion-avatar>
+          <label>{{products.nombre}}</label>
+        </ion-item>
+        <ion-item-options side="right">
+            <button ion-button  color="danger" (click)="removeTask(task)"><ion-icon name="trash"></ion-icon>
+               Borrar
+            </button>
+          </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+<!--<ion-footer>
+    <ion-toolbar >
+      <ion-title> 
+          <ion-chip color="primary">
+              <ion-icon name="star" color="colorapp"></ion-icon>
+              <ion-label>favoritos</ion-label>
+            </ion-chip>
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>-->
+  

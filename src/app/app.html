@@ -1,0 +1,36 @@
+<!--<div *ngIf="showSplash" class="splashs">
+  <div class="spinnerr">
+      <div class="cube11"></div>
+      <div class="cube22"></div>
+  </div>
+</div>
+-->
+
+<ion-menu [content]="content" id="menu-material">
+  <ion-header>
+    <ion-toolbar color="colorapp" >
+      <ion-title>
+          <ion-icon name="basket"></ion-icon> Menu
+      </ion-title>
+    </ion-toolbar>
+   <div>
+         
+  
+  </div>
+  </ion-header>
+  <ion-content>
+    <ion-list no-lines>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-icon item-left name="{{p.icon}}"></ion-icon>
+          {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer>
+   
+  </ion-footer>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

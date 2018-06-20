@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="colorapp"  hideBackButton="true">
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col width-67>
+        <img src="assets/img/shop.png"/>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <div >
+      <form #signInForm="ngForm" (submit)="signIn()">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>Correo electrónico</ion-label>
+                <ion-input [(ngModel)]="userModel.email" id="email" type="email" autocorrect="off" autocapitalize="none" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Contraseña</ion-label>
+                <ion-input type="{{type}}" [(ngModel)]="userModel.password" type="password" name="password" required minlength="6"></ion-input>
+                <!--<ion-icon name="eye" item-right (click)="togglePasswordMode()"></ion-icon>-->
+                <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-off-outline" style="zoom: 2.0"></ion-icon></button>
+                <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-outline" style="zoom: 2.0" ></ion-icon></button>
+            </ion-item>
+
+            <div padding-left padding-right padding-top>
+                <button ion-button [disabled]="!signInForm.form.valid" block round>Entrar</button>
+            </div>
+
+           <!-- <div padding-left padding-right padding-top>
+                <button ion-button  block color="login_pasive_button" clear >Olvide mi contraseña</button>
+            </div>-->
+            
+            <div padding-left padding-right>
+                <p>&iquest;No tiene Cuenta de Usuario? <a (click)="signUp()">Regístrese</a>
+            </div>
+        </ion-list>
+    </form>
+    </div>
+  </ion-content>
+  <ion-footer>
+      <ion-toolbar >
+        <ion-title> 
+            <ion-chip color="primary">
+                <ion-icon name="create" color="colorapp"></ion-icon>
+                <ion-label>Rellena los campos</ion-label>
+              </ion-chip>
+        </ion-title>
+      </ion-toolbar>
+    </ion-footer>
+    

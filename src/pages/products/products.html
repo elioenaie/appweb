@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="colorapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-icon name="basket"></ion-icon> 
+      Productos
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="presentPopover($event)">
+          Perfil 
+          
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-searchbar (ionInput)="obtenerItems($event)" placeholder="Buscar en productos"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let product of listares">
+        <ion-card item-start>
+              <div *ngIf="product.image">
+                <img [src]="product.image" (click)="showDetails(product)">
+              </div>
+              <ion-card-content>
+                <ion-card-title (click)="showDetails(product)"> 
+                  {{product.nombre}}
+                </ion-card-title> 
+              </ion-card-content>
+              <ion-row no-padding>
+                  <ion-col>
+                    <button ion-button clear small color="danger" icon-start (click)="favoritos(product)">
+                      <ion-icon name='star'></ion-icon>
+                      Favorito
+                    </button>
+                  </ion-col>
+                  <ion-col text-center>
+                    <button ion-button clear small color="danger" icon-start>
+                      <!--<ion-icon name='pricetags'></ion-icon>
+                      Pedido-->
+                    </button>
+                  </ion-col>
+                </ion-row>
+        </ion-card>
+      </ion-item>
+  </ion-list>
+</ion-content>
