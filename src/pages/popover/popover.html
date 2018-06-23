@@ -13,13 +13,13 @@
 </ion-header>
 
 
-<ion-content style="background-color:#A5D6A7">
+<ion-content style="background-color:#4CAF50">
   <br>
-  <ion-list  style="background-color:#A5D6A7">
-    <br>
-        <ion-item *ngFor="let usuario of datasCollection"  class="menu-header"  style=" text-align: center;background-color:#A5D6A7;"> 
+  <ion-list  style="background-color:#8BC34A">
+    <br><br>
+        <ion-item *ngFor="let usuario of datasCollection"  class="menu-header"  style=" text-align: center;background-color:#8BC34A;"> 
         <div style="text-align: center">
-        <img [src]="usuario.image" width="100" height="100" *ngIf="!!usuario.image" >
+        <img class="circle-pic"  [src]="usuario.image" width="100" height="100" *ngIf="!!usuario.image" >
         </div>
         <h4>hola!!! <b>{{usuario.nombreuser}}</b></h4>
         <h4><b>{{usuario.email}}</b></h4>

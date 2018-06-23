@@ -76,9 +76,9 @@ export class MyApp {
     this.pages = [
       { title: 'Productos', component: ProductsPage,icon:'archive' },
       { title: 'Insumos', component: InsumosPage,icon:'paper' },
+      { title: 'Proveedores', component: ProveedorPage,icon:'people' },
       { title: 'Administrar insumos', component: AltainsumoPage,icon:'briefcase' },
       { title: 'Administrar producto',component:AddprodPage,icon:'beaker'},
-      { title: 'Proveedores', component: ProveedorPage,icon:'people' },
       { title: 'Administrar proveedores', component: ProveedoraltaPage,icon:'contacts' },
       { title: 'Administrar Tiendas', component: AltaTiendaPage,icon:'appstore' },
       { title: 'Encontrar lugares',component:LocalizacionPage,icon:'globe'},
@@ -95,7 +95,8 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(false);
+      this.statusBar.backgroundColorByHexString('#8BC34A');
       this.splashScreen.hide();
       
       //timer(3000).subscribe(()=>this.showSplash=false)

@@ -50,7 +50,7 @@ export class OperadorPage {
     console.log('opening');
     let actionsheet = this.actionSheetCtrl.create({
     title:"Menú de opciones",
-    cssClass: 'action-sheets-groups-page',
+    cssClass: 'action-sheet-options',
     buttons:[{
     text: 'Ver productos',
     icon:'archive',
@@ -155,7 +155,7 @@ export class OperadorPage {
       if(data&&data.email&&data.uid){
         this.toast.create({
           message: `Bienvenido Operador, ${data.email}`,
-          duration:3000
+          duration:2500
         }).present();
       
         this.db.list(`usuarios/${data.uid}/${this.authService.getUser()}`).valueChanges().subscribe(dato=>{
@@ -181,7 +181,7 @@ export class OperadorPage {
       }else{
         this.toast.create({
           message:`No se encontro su usuario`,
-          duration:3000
+          duration:2500
         }).present();
       }
     })

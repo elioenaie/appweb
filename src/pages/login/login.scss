@@ -1,10 +1,29 @@
 page-login {
-    .passwordIcon{
-        font-size:2rem !important;
-        position: relative !important;
-        top: 22px !important;
-        margin: 0 auto !important;
-        zoom: 6.0px;
-        color: #488aff;
+    
+     .content{
+        background: linear-gradient(30deg, #8BC34A 54%, #4CAF50 54%);
      }
+     .inputs{
+        margin-top: 0px; 
+        //border-bottom: solid 1px w;
+        color: #fff;
+        font-size: 20px;
+     }
+
+     .text-input::-moz-placeholder {
+        color: white;
+      }
+      
+      .text-input:-ms-input-placeholder {
+        color: white;
+      }
+      
+      .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: white;
+      }
+      .buton{
+        background-color:#4CAF50;
+        color: #fff;
+      }
 }

@@ -29,3 +29,32 @@
 
   }
 
+  .md,
+.ios,
+.wp {
+  .custom-alert-danger {
+    > div {
+      background:#8BC34A; // if you don't use .md, .ios, .mp initially, you'd have to use !important here.
+      color: #fff;
+     
+      margin-bottom: 10px;
+    }
+    .alert-message{
+        color: white;
+    }
+    button{
+    background-color: #4CAF50;
+     color: white;
+    }
+  }
+}
+
+
+ .action-sheet-group, {
+  color: #fff;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  border-radius: 4px;
+  background-color: #29B6F6;
+  overflow: hidden;
+}

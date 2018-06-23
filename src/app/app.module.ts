@@ -70,6 +70,8 @@ import {ModaluserPage}from '../pages/modaluser/modaluser';
 import{PopoverPage} from '../pages/popover/popover';
 import {Productos2Page} from '../pages/productos2/productos2';
 
+
+
 @NgModule({
   declarations: [
     MyApp,

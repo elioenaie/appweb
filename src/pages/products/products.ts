@@ -130,6 +130,7 @@ export class ProductsPage {
             //comilla `
             let newTaskModal = this.alertCtrl.create({
               title: '¿Guardar en favoritos?',
+              cssClass: 'custom-alert-danger',
               buttons: [
                 {
                   text: 'Cancelar',

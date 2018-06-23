@@ -116,7 +116,7 @@ export class UsuarioPage {
       if(data&&data.email&&data.uid){
         this.toast.create({
           message: `Bienvenido Usuario, ${data.email}`,
-          duration:3000
+          duration:2500
         }).present();
       
         this.db.list(`usuarios/${data.uid}/${this.authService.getUser()}`).valueChanges().subscribe(dato=>{
@@ -139,7 +139,7 @@ export class UsuarioPage {
       }else{
         this.toast.create({
           message:`No se encontro su usuario`,
-          duration:3000
+          duration:2500
         }).present();
       }
     })

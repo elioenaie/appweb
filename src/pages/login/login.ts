@@ -106,7 +106,8 @@ export class LoginPage {
         this.alert('Error al iniciar sesión', 'Su email o contraseña es incorrecta. Por favor intente nuevamente.');
     });
 }
-signUp() {
+
+public register2() {
   this.navCtrl.push(Register2Page);
 }
 
@@ -115,7 +116,8 @@ alert(title: string, message: string) {
   let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,
-      buttons: ['OK']
+      buttons: ['OK'],
+      cssClass: 'custom-alert-danger'
   });
   alert.present();
 }

@@ -16,7 +16,8 @@ export class PreloaderProvider {
   displayPreloader() : void
    {
       this.loading = this.loadingCtrl.create({
-         content: 'Espere un momento...'
+         content: 'Espere un momento...',
+         cssClass: 'custom-alert-danger',
       });
 
       this.loading.present();

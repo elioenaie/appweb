@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-    <ion-toolbar>
+    <ion-navbar color="colorapp">
         <ion-title>
            {{ nombre }}
         </ion-title>
@@ -23,11 +23,11 @@
                 showWhen="android,windows"></ion-icon>
            </button>
         </ion-buttons>
-     </ion-toolbar>
+      </ion-navbar>
 </ion-header>
 
 
-<ion-content>
+<ion-content id="round">
     <form
     [formGroup]="form"
     (ngSubmit)="saveMovie(form.value)">
