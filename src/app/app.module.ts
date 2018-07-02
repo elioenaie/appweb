@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
- import { IntroSlidesPage } from '../pages/intro-slides/intro-slides';
+import { IntroSlidesPage } from '../pages/intro-slides/intro-slides';
 
 import { LoginPage } from '../pages/login/login';
 import {LogoutPage} from  '../pages/logout/logout';
@@ -69,7 +69,7 @@ import {GetionuserPage} from '../pages/getionuser/getionuser';
 import {ModaluserPage}from '../pages/modaluser/modaluser';
 import{PopoverPage} from '../pages/popover/popover';
 import {Productos2Page} from '../pages/productos2/productos2';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -117,6 +117,7 @@ import {Productos2Page} from '../pages/productos2/productos2';
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp({       
       apiKey: "AIzaSyBTk_Nf1EOcqD1FZ0oA1P3bblW2Pd3Hfpo",
       authDomain: "appweb-fba13.firebaseapp.com",

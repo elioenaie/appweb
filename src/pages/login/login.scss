@@ -1,7 +1,7 @@
 page-login {
     
      .content{
-        background: linear-gradient(30deg, #8BC34A 54%, #4CAF50 54%);
+        background: linear-gradient(30deg, #229954 54%, #1E8449 54%);
      }
      .inputs{
         margin-top: 0px; 
@@ -25,5 +25,12 @@ page-login {
       .buton{
         background-color:#4CAF50;
         color: #fff;
+      }
+      .imgIcon{
+            border-radius: 50%;
+            box-shadow: 0px 0px 8px 8px #fff;
+            -webkit-box-shadow: 0px 0px 8px 8px #fff;
+            height: 100%;
+            width: 100%;
       }
 }
