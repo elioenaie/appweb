@@ -6,15 +6,14 @@
 </div>
 -->
 
-<ion-menu [content]="content" id="menu-material">
+<ion-menu [content]="content" side="left" id="menu1">
   <ion-header>
     <ion-toolbar color="colorapp" >
       <ion-title>
           <ion-icon name="basket"></ion-icon> Menu
       </ion-title>
     </ion-toolbar>
-   <div>
-         
+   <div>       
   
   </div>
   </ion-header>
@@ -33,4 +32,4 @@
 
 </ion-menu>
 
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>
