@@ -26,7 +26,6 @@
 
 
 <ion-content>
-
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content
           pullingIcon="arrow-dropdown"
@@ -45,24 +44,22 @@
               <div *ngIf="movie.image">
                  <img [src]="movie.image">
               </div>
-              <h1><b>{{ movie.nombre }}</b></h1>
+              <h1><b>{{movie.nombre}}</b></h1>
               <h3><b>Nombre científico</b></h3>
-              <small>({{ movie.nombreCientifico }})</small>
+              <small>({{movie.nombreCientifico}})</small>
               <section class="multiples">
                 <h3><b>Proveedor</b></h3>
                  <ion-chip
                     padding-left
                     padding-right
-                    margin-right>{{ movie.proveedor }}</ion-chip>
+                    margin-right>{{movie.proveedor}}</ion-chip>
               </section>
               <h3><b>Método de uso</b></h3>
-              <p class="justifyText">{{ movie.metodouso }}</p>
-              
+              <p class="justifyText">{{movie.metodouso}}</p>
               <h3><b>Descripción</b></h3>
-              <p class="justifyText">{{ movie.descripcion }}</p>
+              <p class="justifyText">{{movie.descripcion}}</p>
            </ion-item>
-  
-  
+
            <div class="manage-record"  style="border-top-style: groove;" >
                 <ion-grid>
                         <ion-row>
@@ -72,7 +69,6 @@
                                 text-center
                                 color="primary"
                                 (click)="editMovie(movie)" block >Editar</button>
-                  
                           </ion-col>
                           <ion-col>
                                 <button
@@ -83,10 +79,7 @@
                           </ion-col>
                         </ion-row>
                     </ion-grid>
-           
-         </div>
-  
+              </div>
         </ion-card>
      </ion-list>
-
 </ion-content>

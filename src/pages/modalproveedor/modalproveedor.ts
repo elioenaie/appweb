@@ -42,12 +42,9 @@ export class ModalproveedorPage {
       this.form 		= _FB.group({
         'descripcion' 		: ['', Validators.minLength(10)],
         'metodouso' 		: ['', Validators.minLength(10)],
-        'nombreprove' 		: ['', Validators.required],
         'nombreCientifico'		: ['', Validators.required],
         'image'		: ['', Validators.required],
-        //'rating'		: ['', Validators.required],
-       'pageweb' 		: ['', Validators.required]
-        //'actors' 		: ['', Validators.required]
+        'pageweb' 		: ['', Validators.required]
      });
   
      this.movies = firebase.database().ref('proveedor/');
@@ -57,8 +54,6 @@ export class ModalproveedorPage {
      {
          let movie 		    = params.get('movie'),
              k;
-  
-         this.movieName	    = movie.nombreprove;
          this.movieDuration	= movie.nombreCientifico;
          this.movieSummary   	= movie.descripcion;
          //this.movieRating   	= movie.rating;
@@ -67,18 +62,6 @@ export class ModalproveedorPage {
          this.movieImage       = movie.image;
          this.filmImage        = movie.image;
          this.movieId          = movie.id;
-  
-      /*
-         for(k in movie.proveedor)
-         {
-            this.movieGenres.push(movie.proveedor[k].name);
-         }*
-  
-  
-        /* for(k in movie.actors)
-         {
-            this.movieActors.push(movie.actors[k].name);
-         }*/
   
          this.isEditable      = true;
      }
@@ -92,12 +75,8 @@ export class ModalproveedorPage {
   {
      this._LOADER.displayPreloader();
 
-     let nombreprove	    : string		= this.form.controls["nombreprove"].value,
-     pageweb 	: string 		= this.form.controls["pageweb"].value,
+     let pageweb 	: string 		= this.form.controls["pageweb"].value,
      descripcion 	: string 		= this.form.controls["descripcion"].value,
-       //rating  	: number		= this.form.controls["rating"].value,
-     //  proveedor  	: any		    = this.form.controls["proveedor"].value,
-       //actors  	: any		    = this.form.controls["actors"].value,
        nombreCientifico 	: string		= this.form.controls["nombreCientifico"].value,
        metodouso    	: string		= this.form.controls["metodouso"].value,
        image     : string        = this.filmImage,
@@ -105,22 +84,6 @@ export class ModalproveedorPage {
        people    : any           = [],
        k         : any;
 
-
-    /* for(k in proveedor)
-     {
-        types.push({
-           "name" : proveedor[k]
-        });
-     }*/
-
-/*
-     for(k in actors)
-     {
-        people.push({
-           "name" : actors[k]
-        });
-     }
-*/
 
      if(this.isEditable)
      {
@@ -134,7 +97,6 @@ export class ModalproveedorPage {
 
               this._DB.updateDatabase(this.movieId,
               {
-                nombreprove    : nombreprove,
                pageweb  :   pageweb,
                descripcion  : descripcion,
                //rating   : rating,
@@ -156,13 +118,9 @@ export class ModalproveedorPage {
 
           this._DB.updateDatabase(this.movieId,
           {
-            nombreprove    : nombreprove,
             pageweb : pageweb,
             descripcion  : descripcion,
-           //rating   : rating,
            nombreCientifico : nombreCientifico,
-        //   proveedor   : types,
-          // actors   : people,
           metodouso     : metodouso
         })
           .then((data) =>
@@ -180,15 +138,12 @@ export class ModalproveedorPage {
            let uploadedImage : any = snapshot.downloadURL;
 
            this._DB.addToDatabase({
-            nombreprove    : nombreprove,
             pageweb : pageweb,
             image    : uploadedImage,
             descripcion  : descripcion,
             //rating   : rating,
             nombreCientifico : nombreCientifico,
-         //   proveedor   : types,
-          //  actors   : people,
-          metodouso     : metodouso
+            metodouso     : metodouso
          })
            .then((data) =>
            {

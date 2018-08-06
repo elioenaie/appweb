@@ -31,8 +31,8 @@ export class PopoverPage {
           this.listares=[];
           dato.forEach(f=>{
             this.listares.push(f);
-           
           })
+          console.log('datos popover user')
           console.log(this.listares)
           this.datasCollection=[];
           this.user = {

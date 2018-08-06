@@ -41,10 +41,14 @@ export class OperadorPage {
     user: any;
     datasCollection: Array<Object>;
    // mydata: Array<Object>;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fAuth: AngularFireAuth,
+  datosuser:any;
+   constructor(public navCtrl: NavController, public navParams: NavParams,public fAuth: AngularFireAuth,
   public toast:ToastController,public db: AngularFireDatabase,
   public authService: AutentificacionProvider,public actionSheetCtrl: ActionSheetController) {
     this.tasksRef= this.db.list('usuarios');
+    this.datosuser=navParams.get('datos');
+    console.log('datos user operador')
+    console.log(this.datosuser)
   }
   openActionSheet(){
     console.log('opening');
@@ -83,7 +87,7 @@ export class OperadorPage {
         }
         },
         {
-          text: 'Alta como proveedor',
+          text: 'Alta de datos contacto proveedor',
           icon:'people',
           cssClass: 'EditionIcon',
           handler: ()=>{
@@ -95,7 +99,7 @@ export class OperadorPage {
       icon: 'beaker',
       cssClass: 'EditionIcon',
       handler: ()=>{
-        this.navCtrl.push(AddprodPage);
+        this.navCtrl.push(AddprodPage,{datosuser:this.datosuser});
       }
       },
       {

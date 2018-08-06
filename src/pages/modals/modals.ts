@@ -28,9 +28,13 @@ export class ModalsPage {
   public movieRating      : any     = '';
   public movieId          : string  = '';
   public isEditable       : boolean = false;
+  public certificado :any ='';
+  public numcertificado:any='';
   //db
   public listRef: AngularFireList<any>;
-
+  proveedor:any;
+  datosuser:any;
+  nameprove:any;
   constructor(
     public navCtrl        : NavController,
     public params         : NavParams,
@@ -49,7 +53,9 @@ export class ModalsPage {
       'lugarproduccion' 		: ['', Validators.maxLength(40)],
       'nombreCientifico'		: ['', Validators.required],
       'image'		: ['', Validators.required],
-      'proveedor' 		: ['', Validators.required]
+      'proveedor' 		: ['', Validators.required],
+      'certificado': ['',Validators.required],
+      'numcertificado':['',Validators.required]
    });
 
    this.movies = firebase.database().ref('productos/');
@@ -76,16 +82,29 @@ export class ModalsPage {
        this.movieName	    = movie.nombre;
        this.movieDuration	= movie.nombreCientifico;
        this.movieSummary   	= movie.descripcion;
-       //this.movieRating   	= movie.rating;
+       this.certificado = movie.certificado;
+       this.numcertificado = movie.numcertificado;
        this.movieYear    	=   movie.lugarproduccion;
        this.movieImage       = movie.image;
        this.filmImage        = movie.image;
        this.movieId          = movie.id;
+       
 
-
-     
-       this.isEditable      = true;
+       this.isEditable= true;
    }
+
+   this.datosuser=this.params.get('datosuser');
+
+   if(this.datosuser.length==4){
+    this.nameprove=this.datosuser[1];
+   }else if(this.datosuser.length==5){
+     this.nameprove=this.datosuser[2];
+   }
+    
+   
+   console.log('datos user aad modal')
+   console.log(this.nameprove)
+
 }
 
   ionViewDidLoad() {
@@ -99,10 +118,13 @@ export class ModalsPage {
      let nombre	    : string		= this.form.controls["name"].value,
         descripcion 	: string 		= this.form.controls["descripcion"].value,
        //rating  	: number		= this.form.controls["rating"].value,
-       proveedor  	: any		    = this.form.controls["proveedor"].value,
+       proveedor  	: any		    = this.nameprove,
        //actors  	: any		    = this.form.controls["actors"].value,
        nombreCientifico 	: string		= this.form.controls["nombreCientifico"].value,
        lugarproduccion    	: string		= this.form.controls["lugarproduccion"].value,
+       certificado :string =this.form.controls["certificado"].value,
+       numcertificado :string =this.form.controls["numcertificado"].value,
+
        image     : string        = this.filmImage,
        types     : any           = [],
        people    : any           = [],
@@ -128,7 +150,9 @@ export class ModalsPage {
                nombreCientifico : nombreCientifico,
                image    : uploadedImage,
                proveedor   : proveedor,
-              lugarproduccion     : lugarproduccion
+              lugarproduccion     : lugarproduccion,
+              certificado:certificado,
+              numcertificado:numcertificado
             })
               .then((data) =>
               {
@@ -148,7 +172,9 @@ export class ModalsPage {
            nombreCientifico : nombreCientifico,
            proveedor   : proveedor,
           // actors   : people,
-          lugarproduccion     : lugarproduccion
+          lugarproduccion     : lugarproduccion,
+          certificado :certificado,
+          numcertificado:numcertificado
         })
           .then((data) =>
           {
@@ -171,7 +197,9 @@ export class ModalsPage {
             nombreCientifico : nombreCientifico,
             proveedor   : proveedor,
           //  actors   : people,
-          lugarproduccion     : lugarproduccion
+          lugarproduccion     : lugarproduccion,
+          certificado:certificado,
+          numcertificado:numcertificado
          })
            .then((data) =>
            {

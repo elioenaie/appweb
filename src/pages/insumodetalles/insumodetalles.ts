@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import {ModaldetailprovePage} from '../modaldetailprove/modaldetailprove';
 /**
  * Generated class for the InsumodetallesPage page.
  *
@@ -23,6 +23,13 @@ export class InsumodetallesPage {
   goBack() {
       this.navCtrl.pop();
   }
+  
+  showDetails(product){
+    let datos: any =[];
+    var prove = product['proveedor']  
+    this.navCtrl.push(ModaldetailprovePage,{prove:prove});
+    }
+    
 
  
 

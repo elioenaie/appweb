@@ -34,6 +34,8 @@ export class DatabaseProvider {
                id        : item.key,
                 nombre     : item.val().nombre,
                lugarproduccion      : item.val().lugarproduccion,
+               certificado :item.val().certificado,
+               numcertificado:item.val().numcertificado,
                nombreCientifico  : item.val().nombreCientifico,
                proveedor    : item.val().proveedor,
                image     : item.val().image,
@@ -48,6 +50,7 @@ export class DatabaseProvider {
   obtenerDatos(){
     return this.afDB.list('favoritos/'+this.auth.getUser()).valueChanges();
   }
+
   
   renderMovies() : Observable<any>
   {
@@ -60,10 +63,46 @@ export class DatabaseProvider {
            {
               films.push({
                id        : item.key,
-                nombre     : item.val().nombre,
+               nombre     : item.val().nombre,
                lugarproduccion      : item.val().lugarproduccion,
+               certificado :item.val().certificado,
+               numcertificado:item.val().numcertificado,
                nombreCientifico  : item.val().nombreCientifico,
                proveedor    : item.val().proveedor,
+               image     : item.val().image,
+               descripcion   : item.val().descripcion
+            });
+           });
+           console.log(films)
+           films.reverse();
+           observer.next(films);
+
+           observer.complete();
+        },
+        (error) =>
+        {
+           console.log("Observer error: ", error);
+           console.dir(error);
+           observer.error(error)
+        });
+
+     });
+  }
+  renderProve(prove) : Observable<any>
+  {
+     return new Observable(observer =>
+     {     
+        let films : any = [];
+        firebase.database().ref(`proveedor/`).orderByChild('nombreprove').equalTo(prove).once('value', (items : any) =>
+        {
+           items.forEach((item) =>
+           {
+              films.push({
+               id        : item.key,
+               nombreprove     : item.val().nombreprove,
+               nombreCientifico   : item.val().nombreCientifico,
+               metodouso: item.val().metodouso,
+               pageweb    : item.val().pageweb,
                image     : item.val().image,
                descripcion   : item.val().descripcion
             });
@@ -100,17 +139,13 @@ export class DatabaseProvider {
   {
      return new Promise((resolve) =>
      {
-       // movieObj.id=Date.now();
-
-     //   firebase.database().ref(`productosres/${movieObj.id}`).set(movieObj);
-
-        //let addRef = firebase.database().ref(`productos/${this.auth.getUser()}`);
-       // addRef.push(movieObj);
        let nuevoUsuario = firebase.database().ref('productos/').push(); 
                 nuevoUsuario.set
                  ({ nombre:movieObj.nombre, 
                     image: movieObj.image,
                     lugarproduccion: movieObj.lugarproduccion, 
+                    certificado :movieObj.certificado,
+                    numcertificado:movieObj.numcertificado,
                     descripcion: movieObj.descripcion,
                     nombreCientifico:movieObj.nombreCientifico,
                     proveedor:movieObj.proveedor,

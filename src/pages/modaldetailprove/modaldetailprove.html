@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="colorapp">
+      <!--<ion-buttons left>
+          <button ion-button (click)="closeSearch()">
+            <ion-icon name="md-arrow-back"></ion-icon>
+          </button>
+        </ion-buttons>-->
+    <ion-title>
+      <ion-icon name="md-checkbox-outline"></ion-icon> Proveedor
+    </ion-title>
+  </ion-navbar> 
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let prove of proveedor">
+      <ion-card-header>  
+        <img src={{prove.image}}/>
+      </ion-card-header>
+
+    <ion-card-content>
+      <h1><b>{{prove.nombreprove}}</b></h1>
+      <h3><b>Página web</b></h3>
+      <p>{{ prove.pageweb }}</p>
+      <h3><b>Dirección</b></h3>
+       <h5> {{prove.nombreCientifico}} </h5>
+     
+     <h3><b>Teléfono</b></h3>
+     <p class="justifyText">{{prove.metodouso}}</p>
+     <h3><b>Productos</b></h3>
+     <ion-chip
+             padding-left
+             padding-right
+             margin-right *ngFor="let prod of products" (click)="showDetails(prod)">{{prod.nombre}}</ion-chip>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-footer>
+      <ion-toolbar color="colorapp" >     
+      </ion-toolbar>
+    </ion-footer>
+
+</ion-content>

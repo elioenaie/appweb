@@ -25,11 +25,11 @@
         <h3><b>Nombre científico</b></h3>
          <h5> {{product.nombreCientifico}} </h5>
        <section class="multiples">
-          <h3><b>Proveedores</b></h3>
+          <h3><b>Proveedor</b></h3>
           <ion-chip
              padding-left
              padding-right
-             margin-right>{{product.proveedor}}</ion-chip>
+             margin-right (click)="showDetails(product)">{{product.proveedor}}</ion-chip>
        </section>
        <h3><b>Método de uso</b></h3>
        <p class="justifyText">{{product.metodouso}}</p>

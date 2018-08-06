@@ -78,23 +78,35 @@
              formControlName="nombreCientifico"
              [(ngModel)]="movieDuration"></ion-input>
         </ion-item>
- 
- 
- 
-        <ion-item>
+
+        <!--<ion-item>
           <ion-label stacked>Proveedor</ion-label>
           <ion-input
           type="text"
           formControlName="proveedor"
           [(ngModel)]="movieGenres"></ion-input>
         </ion-item>
- 
+      -->
         <ion-item>
           <ion-label stacked>Lugar de producción:</ion-label>
           <ion-input
              type="text"
              formControlName="lugarproduccion"
              [(ngModel)]="movieYear"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Certificado por:</ion-label>
+          <ion-input
+             type="text"
+             formControlName="certificado"
+             [(ngModel)]="certificado"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Número de certificado:</ion-label>
+          <ion-input
+             type="number"
+             formControlName="numcertificado"
+             [(ngModel)]="numcertificado"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -115,8 +127,7 @@
             color="primary"
             text-center
             padding-top
-            padding-bottom
-            [disabled]="!form.valid" >
+            padding-bottom >
              <div *ngIf="!isEditable">
                 Agregar producto
              </div>

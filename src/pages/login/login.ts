@@ -74,11 +74,12 @@ export class LoginPage {
   userModel: UserModel;
   public usuarios: AngularFireList<any>;
   public users: Array<{rol:string}>;
-  public datos: Array<any>;
+  public datos: any[]=[];
 
   public type = 'password';
   public showPass = false;
   activeMenu: string;
+  
   constructor(   public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
@@ -132,16 +133,16 @@ export class LoginPage {
     this.authService.signInWithEmailAndPassword(this.userModel).then(result => {
         //codigo nuevo 
         this.db.list(`usuarios/${result.uid}/${this.authService.getUser()}`).valueChanges().subscribe(user=>{
-          this.datos=[];
-          user.forEach(f=>{
-           this.datos.push(f);
-          })
-          //  console.log(this.datos)
+            for(var i=0;i<user.length;i++){
+              this.datos.push(user[i])
+            }
+              console.log('datos user resquest')
+              console.log(this.datos)
             if(this.datos[4]=="Administrador"||this.datos[3]=="Administrador"){
               this.navCtrl.setRoot(ProductsPage);
               loading.dismiss();
             }else if(this.datos[4]=="Operador"||this.datos[3]=="Operador"){
-              this.navCtrl.push(OperadorPage);
+              this.navCtrl.push(OperadorPage,{datos:this.datos});
               loading.dismiss();
             }else if(this.datos[4]=="Usuario"||this.datos[3]=="Usuario"){
               this.navCtrl.push(UsuarioPage);

@@ -27,6 +27,7 @@ export class AddprodPage {
   user: any;
   public listares : Array<any>;
   datasCollection: Array<Object>;
+  datosuser:any;
   constructor(public navCtrl       : NavController,
     private platform     : Platform,
     private modalCtrl    : ModalController,
@@ -36,6 +37,8 @@ export class AddprodPage {
     public authe:AutentificacionProvider, public afDB: AngularFireDatabase, public navParams:NavParams,public angularFireDatabase:AngularFireDatabase) {
       
       this.userModel=new UserModel();
+      this.datosuser=navParams.get('datosuser');
+      console.log(this.datosuser)
   }
  
   ionViewDidLoad() {
@@ -75,7 +78,7 @@ export class AddprodPage {
 
    addRecord()
    {
-      let modal = this.modalCtrl.create(ModalsPage);
+      let modal = this.modalCtrl.create(ModalsPage,{datosuser:this.datosuser});
       modal.onDidDismiss((data) =>
       {
          if(data)

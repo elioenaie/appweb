@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ViewController, NavParams } from 'ionic-angular';
@@ -6,7 +5,10 @@ import { ImageProvider } from '../../providers/image/image';
 import { PreloaderProvider } from '../../providers/preloader/preloader';
 import { InsumodatabaseProvider } from '../../providers/insumodatabase/insumodatabase';
 import * as firebase from 'firebase';
-import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireList, AngularFireDatabase,AngularFireObject} from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import {AutentificacionProvider} from '../../providers/autentificacion/autentificacion';
+
 /**
  * Generated class for the ModalinsumoPage page.
  *
@@ -34,7 +36,11 @@ export class ModalinsumoPage {
   public movieId          : string  = '';
   public isEditable       : boolean = false;
   public listRef: AngularFireList<any>;
-
+  user: any ;
+  datasCollection: Array<Object>;
+  public listares : Array<any>;
+  public listares1 : Array<{name:string}>;
+  datos:any[]=[];
   constructor(public navCtrl        : NavController,
     public params         : NavParams,
     private _FB 	        : FormBuilder,
@@ -42,17 +48,16 @@ export class ModalinsumoPage {
     public viewCtrl       : ViewController,
     private _LOADER       : PreloaderProvider,
     private _DB           : InsumodatabaseProvider,
-    private db: AngularFireDatabase) {
+    private db: AngularFireDatabase,
+    public fAuth: AngularFireAuth,
+    public authService: AutentificacionProvider) {
 
       this.form 		= _FB.group({
         'descripcion' 		: ['', Validators.minLength(10)],
         'metodouso' 		: ['', Validators.minLength(10)],
         'name' 		: ['', Validators.required],
         'nombreCientifico'		: ['', Validators.required],
-        'image'		: ['', Validators.required],
-        //'rating'		: ['', Validators.required],
-        'proveedor' 		: ['', Validators.required],
-        //'actors' 		: ['', Validators.required]
+        'image'		: ['', Validators.required]
      });
   
      this.movies = firebase.database().ref('productos/');
@@ -77,22 +82,29 @@ export class ModalinsumoPage {
          this.movieName	    = movie.nombre;
          this.movieDuration	= movie.nombreCientifico;
          this.movieSummary   	= movie.descripcion;
-         //this.movieRating   	= movie.rating;
          this.movieYear    	=   movie.metodouso;
          this.movieImage       = movie.image;
          this.filmImage        = movie.image;
          this.movieId          = movie.id;
   
   
-      
-  
-        /* for(k in movie.actors)
-         {
-            this.movieActors.push(movie.actors[k].name);
-         }*/
-  
+    
          this.isEditable      = true;
      }
+
+     this.fAuth.authState.take(1).subscribe(data=>{
+      if(data&&data.email&&data.uid){
+     
+        this.db.list(`usuarios/${data.uid}/${this.authService.getUser()}`).valueChanges().subscribe((dato)=>{
+         for(var i=0;i<dato.length;i++){
+          this.datos.push(dato[i]);
+         }
+         console.log(this.datos[1])
+        });
+        
+      }
+    })
+    
   }
 
   ionViewDidLoad() {
@@ -105,27 +117,12 @@ export class ModalinsumoPage {
 
      let nombre	    : string		= this.form.controls["name"].value,
      descripcion 	: string 		= this.form.controls["descripcion"].value,
-       //rating  	: number		= this.form.controls["rating"].value,
-       proveedor  	: any		    = this.form.controls["proveedor"].value,
-       //actors  	: any		    = this.form.controls["actors"].value,
        nombreCientifico 	: string		= this.form.controls["nombreCientifico"].value,
        metodouso    	: string		= this.form.controls["metodouso"].value,
        image     : string        = this.filmImage,
        types     : any           = [],
        people    : any           = [],
        k         : any;
-
-
-     
-
-/*
-     for(k in actors)
-     {
-        people.push({
-           "name" : actors[k]
-        });
-     }
-*/
 
      if(this.isEditable)
      {
@@ -144,7 +141,7 @@ export class ModalinsumoPage {
                //rating   : rating,
                nombreCientifico : nombreCientifico,
                image    : uploadedImage,
-               proveedor   : proveedor,
+               proveedor   : this.datos[1],
               // actors   : people,
               metodouso     : metodouso
             })
@@ -164,7 +161,7 @@ export class ModalinsumoPage {
             descripcion  : descripcion,
            //rating   : rating,
            nombreCientifico : nombreCientifico,
-           proveedor   : proveedor,
+           proveedor   : this.datos[1],
           // actors   : people,
           metodouso     : metodouso
         })
@@ -188,7 +185,7 @@ export class ModalinsumoPage {
             descripcion  : descripcion,
             //rating   : rating,
             nombreCientifico : nombreCientifico,
-            proveedor   : proveedor,
+            proveedor   : this.datos[1],
           //  actors   : people,
           metodouso     : metodouso
          })

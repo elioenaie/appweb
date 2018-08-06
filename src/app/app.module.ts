@@ -23,8 +23,8 @@ import {InsumosPage} from '../pages/insumos/insumos';
 import {AltainsumoPage} from '../pages/altainsumo/altainsumo';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { BillingPage } from '../pages/billing/billing';
+import {ModaldetailprovePage} from '../pages/modaldetailprove/modaldetailprove';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -110,7 +110,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     GetionuserPage,
     ModaluserPage,
     PopoverPage,
-    Productos2Page
+    Productos2Page,
+    ModaldetailprovePage
   ],
   imports: [
     BrowserModule,
@@ -168,7 +169,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     GetionuserPage,
     ModaluserPage,
     PopoverPage,
-    Productos2Page
+    Productos2Page,
+    ModaldetailprovePage
   ],
   providers: [
     LocationAccuracy,

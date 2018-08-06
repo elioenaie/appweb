@@ -34,7 +34,7 @@
 
      <ion-item-divider color="light">
        <div *ngIf="!isEditable">
-          Agregar nuevo proveedor
+          Completar campos
        </div>
 
        <div *ngIf="isEditable">
@@ -67,13 +67,6 @@
          </span>
          
        </ion-item>
-       <ion-item>
-        <ion-label stacked>Nombre:</ion-label>
-        <ion-input
-           type="text"
-           formControlName="nombreprove"
-           [(ngModel)]="movieName"></ion-input>
-      </ion-item>
 
      <ion-item>
        <ion-label stacked>Página web:</ion-label>
@@ -137,7 +130,7 @@
          text-center
          padding-top
          padding-bottom
-         [disabled]="!form.valid">
+       >
           <div *ngIf="!isEditable">
              Guardar proveedor
           </div>
