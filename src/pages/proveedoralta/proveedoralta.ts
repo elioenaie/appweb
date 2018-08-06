@@ -24,13 +24,15 @@ export class ProveedoraltaPage {
   public movies    : any;
   private email    : string = 'enai04@gmail.com';
   private pass     : string = 'enai041294';
-
+  datosuser:any;
   constructor(public navCtrl: NavController,
     private platform     : Platform,
     private modalCtrl    : ModalController,
     private _IMG         : ImageProvider,
+    public params: NavParams,
     private _LOADER      : PreloaderProvider,
   private _DB          : ProveedordatabaseProvider) {
+    this.datosuser=this.params.get('datosuser');
   }
 
   ionViewDidLoad() {
@@ -66,7 +68,7 @@ export class ProveedoraltaPage {
 
   addRecord()
   {
-     let modal = this.modalCtrl.create(ModalproveedorPage);
+     let modal = this.modalCtrl.create(ModalproveedorPage,{datosuser:this.datosuser});
      modal.onDidDismiss((data) =>
      {
         if(data)

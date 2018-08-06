@@ -31,6 +31,7 @@ export class ProveedordatabaseProvider {
               films.push({
                id        : item.key,
             //  actors    : item.val().actors
+            nombreprove     : item.val().nombreprove,
                pageweb : item.val().pageweb,
                metodouso      : item.val().metodouso,
                nombreCientifico  : item.val().nombreCientifico,
@@ -77,6 +78,7 @@ export class ProveedordatabaseProvider {
         let nuevoUsuario = firebase.database().ref('proveedor/').push(); 
       nuevoUsuario.set
        ({
+        nombreprove:movieObj.nombreprove, 
           image: movieObj.image,
           metodouso: movieObj.metodouso, 
           descripcion: movieObj.descripcion,

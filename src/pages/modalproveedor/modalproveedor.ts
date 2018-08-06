@@ -30,7 +30,9 @@ export class ModalproveedorPage {
   public provepageweb      : any     = '';
   public movieId          : string  = '';
   public isEditable       : boolean = false;
-
+  proveedor:any;
+  datosuser:any;
+  nameprove:any;
   constructor(public navCtrl: NavController,
     public params         : NavParams,
     private _FB 	        : FormBuilder,
@@ -56,7 +58,7 @@ export class ModalproveedorPage {
              k;
          this.movieDuration	= movie.nombreCientifico;
          this.movieSummary   	= movie.descripcion;
-         //this.movieRating   	= movie.rating;
+         this.movieName	    = movie.nombreprove;
          this.provepageweb =movie.pageweb;
          this.movieYear    	=   movie.metodouso;
          this.movieImage       = movie.image;
@@ -65,6 +67,17 @@ export class ModalproveedorPage {
   
          this.isEditable      = true;
      }
+     this.datosuser=this.params.get('datosuser');
+
+     if(this.datosuser.length==4){
+      this.nameprove=this.datosuser[1];
+     }else if(this.datosuser.length==5){
+       this.nameprove=this.datosuser[2];
+     }
+      
+     
+     console.log('datos provedee aad modal')
+     console.log(this.nameprove)
   }
 
   ionViewDidLoad() {
@@ -75,10 +88,12 @@ export class ModalproveedorPage {
   {
      this._LOADER.displayPreloader();
 
-     let pageweb 	: string 		= this.form.controls["pageweb"].value,
+     let proveedor  	: any		    = this.nameprove,
+     pageweb 	: string 		= this.form.controls["pageweb"].value,
      descripcion 	: string 		= this.form.controls["descripcion"].value,
        nombreCientifico 	: string		= this.form.controls["nombreCientifico"].value,
        metodouso    	: string		= this.form.controls["metodouso"].value,
+
        image     : string        = this.filmImage,
        types     : any           = [],
        people    : any           = [],
@@ -97,6 +112,7 @@ export class ModalproveedorPage {
 
               this._DB.updateDatabase(this.movieId,
               {
+                proveedor:proveedor,
                pageweb  :   pageweb,
                descripcion  : descripcion,
                //rating   : rating,
@@ -118,6 +134,7 @@ export class ModalproveedorPage {
 
           this._DB.updateDatabase(this.movieId,
           {
+            proveedor:proveedor,
             pageweb : pageweb,
             descripcion  : descripcion,
            nombreCientifico : nombreCientifico,
@@ -138,6 +155,7 @@ export class ModalproveedorPage {
            let uploadedImage : any = snapshot.downloadURL;
 
            this._DB.addToDatabase({
+             proveedor:proveedor,
             pageweb : pageweb,
             image    : uploadedImage,
             descripcion  : descripcion,

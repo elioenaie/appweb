@@ -91,7 +91,7 @@ export class OperadorPage {
           icon:'people',
           cssClass: 'EditionIcon',
           handler: ()=>{
-            this.navCtrl.push(ProveedoraltaPage);
+            this.navCtrl.push(ProveedoraltaPage,{datosuser:this.datosuser});
           }
           },
       {
